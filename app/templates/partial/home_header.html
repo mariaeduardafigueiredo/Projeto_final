@@ -1,0 +1,112 @@
+{% load static %}
+
+<style>
+    .header_wrapper {
+        background-color: transparent;
+
+        width: 100%;
+        height: 100px;
+
+        display: flex;
+        justify-content: left;
+        align-items: center;
+
+        margin-left: 45px;
+    }
+
+    .header_container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        width: 85%;
+    }
+
+    .row {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        gap: 25px;
+    }
+
+    .logo {
+        width: 50px;
+        height: 50px;
+        margin-right: 30px;
+    }
+
+    .header_text {
+        font-family: "Open Sans", sans-serif;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 32px;
+
+        color: #FFFFFF;
+    }
+
+    .header_button {
+        background: transparent;
+        border-radius: 14px;
+        border-color: #FFFFFF;
+        
+        padding: 6px 10px;
+        width: 180px; 
+    }
+
+    .header_button:hover {
+        opacity: 0.6;
+        cursor: pointer;
+    }
+
+    .button_text_with_icon {
+        display: flex;
+        align-items: center;
+        justify-content: left;
+        
+        color: #ffffff;
+
+        padding: 2.5px;
+        padding-left: 15px;
+
+        text-decoration: none;
+    }
+
+    .text_icon {
+        width: 30px;
+        height: 30px;
+        padding-right: 5px;
+    }
+</style>
+
+<div class="header_wrapper">
+    <div class="header_container">
+        <div class="row">
+            <h1 class="header_text"> <img class="logo" src="{% static 'img/logo_principal.png' %}" alt="Logo Principal"/>Gerenciamento de EPI's</h1>
+        </div>
+
+        
+        <div class="row">
+            <button class="header_button">
+                <a class="button_text_with_icon" href="{% url 'login' %}">
+                    <img class="text_icon" src="{% static 'icons/icons8-login-48.png' %}" alt="Ícone"/> 
+                    Login
+                </a>
+            </button>
+            
+            <button class="header_button">
+                <a class="button_text_with_icon" href="{% url 'cadastro' %}">
+                    <img class="text_icon" src="{% static 'icons/icons8-register-64.png' %}" alt="Ícone"/> 
+                    Cadastro
+                </a>
+            </button>
+
+            <button class="header_button">
+                <a class="button_text_with_icon" href="{% url 'interno' %}"> 
+                    <img class="text_icon" src="{% static 'icons/icons8-casa-50.png' %}" alt="Ícone"/> 
+                    Acessar
+                </a>
+            </button>
+        </div>
+    </div>
+</div>

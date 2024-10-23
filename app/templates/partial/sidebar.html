@@ -1,0 +1,121 @@
+
+{% load static %}
+
+{% block sidebar %}
+
+<script src="{% static 'js/script.js' %}"></script>
+
+<style>
+    /* Estilos gerais */
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    li {
+        display: inline-block;
+        margin-right: 10px;
+    }
+
+    a {
+        color: #ff7b00;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    a:hover {
+        color: #fff; /* Muda a cor ao passar o mouse */
+    }
+
+    .sidebar {
+        display: block;
+        top: 0;
+        right: -220px; /* Inicialmente fora da tela */
+        min-height: 100vh;
+        width: 200px;
+        position: fixed;
+        background-color: #444;
+        transition: right 0.3s ease; /* Animação para abrir e fechar */
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5); /* Sombra */
+        padding: 20px;
+    }
+
+    .sidebar nav ul {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start; /* Alinha à esquerda */
+    }
+
+    .sidebar nav ul li {
+        margin: 20px 0;
+    }
+
+    .sidebar.open {
+        right: 0; /* Mostra a sidebar ao ativar a classe open */
+    }
+
+    .menu-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: #ff7b00;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        z-index: 1000; /* Coloca o botão acima de outros elementos */
+        transition: background 0.3s;
+    }
+
+    .menu-button:hover {
+        background: #e06d00; /* Muda a cor ao passar o mouse */
+    }
+
+    main {
+        margin: 10px;
+        padding-top: 50px;
+    }
+
+    section {
+        margin-bottom: 20px;
+    }
+</style>
+
+<div>
+    <aside class="sidebar">
+        <nav>
+            <ul>
+                <li><a href="/" id="home-link">Home</a></li>
+                <li><a href="{% url 'contato' %}">Sobre nós</a></li>
+                <li><a href="{% url 'contato' %}">Contato</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <button class="menu-button" aria-expanded="false" aria-controls="sidebar-menu" onclick="toggleSidebar()" style="margin-top: 10px;">
+        ☰
+    </button>
+
+    <main>
+       
+</div>
+
+<script>
+    function toggleSidebar() {
+        const sidebar = document.querySelector('.sidebar');
+        sidebar.classList.toggle('open');
+    }
+
+    // Adiciona o comportamento de redirecionamento para o botão Home
+    document.getElementById('/').addEventListener('click', function(event) {
+        event.preventDefault();  // Previne o comportamento padrão
+        window.location.href = '/';  // Redireciona para a página inicial
+    });
+</script>
+
+{% endblock sidebar %}
